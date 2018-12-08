@@ -1,7 +1,6 @@
 ﻿using BookingSystem.Core.Entities;
 using BookingSystem.Core.Exceptions;
 using BookingSystem.Core.Interfaces;
-using BookingSystem.Core.Rules;
 using FluentValidation;
 using System;
 
@@ -10,13 +9,13 @@ namespace BookingSystem.Core.Interactions
     /// <summary>
     /// An interactor for making a booking
     /// </summary>
-    public class MakeBookingInteractor
+    public class MakeBookingInteractor : IMakeBookingRequest
     {
-        private IMakeBookingResponseHandler responseHandler;
+        private readonly IMakeBookingResponseHandler responseHandler;
 
-        private IBookingRepository bookingRepository;
+        private readonly IBookingRepository bookingRepository;
 
-        private IValidator<Booking> validator;
+        private readonly IValidator<Booking> validator;
 
         /// <summary>
         /// Gets or sets the booking to be made

@@ -6,11 +6,11 @@ namespace BookingSystem.Core.Interactions
     /// <summary>
     /// An interactor for getting bookings for a set date
     /// </summary>
-    public class GetBookingForDateInteractor
+    public class GetBookingForDateInteractor : IGetBookingForDateRequest
     {
-        private IGetBookingForDateResponseHandler responseHandler { get; set; }
+        private readonly IGetBookingForDateResponseHandler responseHandler;
 
-        private IBookingRepository bookingRepository { get; set; }
+        private readonly IBookingRepository bookingRepository;
 
         /// <summary>
         /// Gets or sets the date to get bookings for

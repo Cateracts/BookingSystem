@@ -1,5 +1,5 @@
 ﻿using BookingSystem.Core.Entities;
-using BookingSystem.Core.InMemory;
+using BookingSystem.Persistence.InMemory;
 using BookingSystem.Core.Interactions;
 using BookingSystem.Core.Interfaces;
 using BookingSystem.Core.Rules;
