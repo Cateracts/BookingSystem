@@ -2,6 +2,7 @@
 using BookingSystem.Core.InMemory;
 using BookingSystem.Core.Interactions;
 using BookingSystem.Core.Interfaces;
+using BookingSystem.Core.Tests.Shared;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -24,11 +25,11 @@ namespace BookingSystem.Core.Tests.Interactions
         public void SetupInMemoryRepositoryData()
         {
             bookings = new List<Booking>();
-            bookings.Add(new Booking() { Id = 0, Name = "FirstName1, LastName1", Period = new DateRange(new DateTime(2018, 1, 2, 10, 0, 0), new DateTime(2018, 1, 2, 11, 0, 0)) });
-            bookings.Add(new Booking() { Id = 0, Name = "FirstName2, LastName2", Period = new DateRange(new DateTime(2018, 1, 2, 11, 0, 0), new DateTime(2018, 1, 2, 12, 0, 0)) });
-            bookings.Add(new Booking() { Id = 0, Name = "FirstName3, LastName3", Period = new DateRange(new DateTime(2018, 1, 3, 10, 0, 0), new DateTime(2018, 1, 3, 11, 0, 0)) });
-            bookings.Add(new Booking() { Id = 0, Name = "FirstName4, LastName4", Period = new DateRange(new DateTime(2018, 1, 4, 10, 0, 0), new DateTime(2018, 1, 4, 11, 0, 0)) });
-            bookings.Add(new Booking() { Id = 0, Name = "FirstName5, LastName5", Period = new DateRange(new DateTime(2018, 1, 4, 10, 0, 0), new DateTime(2018, 1, 4, 11, 0, 0)) });
+            bookings.Add(new Booking() { Id = 0, Name = "FirstName1, LastName1", Start = new DateTime(2018, 1, 2, 10, 0, 0), End = new DateTime(2018, 1, 2, 11, 0, 0) });
+            bookings.Add(new Booking() { Id = 0, Name = "FirstName2, LastName2", Start = new DateTime(2018, 1, 2, 11, 0, 0), End = new DateTime(2018, 1, 2, 12, 0, 0) });
+            bookings.Add(new Booking() { Id = 0, Name = "FirstName3, LastName3", Start = new DateTime(2018, 1, 3, 10, 0, 0), End = new DateTime(2018, 1, 3, 11, 0, 0) });
+            bookings.Add(new Booking() { Id = 0, Name = "FirstName4, LastName4", Start = new DateTime(2018, 1, 4, 10, 0, 0), End = new DateTime(2018, 1, 4, 11, 0, 0) });
+            bookings.Add(new Booking() { Id = 0, Name = "FirstName5, LastName5", Start = new DateTime(2018, 1, 4, 10, 0, 0), End = new DateTime(2018, 1, 4, 11, 0, 0) });
         }
 
         /// <summary>
@@ -39,7 +40,7 @@ namespace BookingSystem.Core.Tests.Interactions
         {
             // Arrange
             var today = new DateTime(2018, 1, 2, 10, 0, 0);
-            var expected = bookings.Where(booking => booking.Period.Contains(today)).ToList();
+            var expected = bookings.Where(booking => booking.Start.Date == today.Date || booking.End.Date == today.Date).ToList();
             var response_handler = new GetBookingForDateResponseHandler();
             var booking_repository = new InMemoryBookingRepository();
             booking_repository.Bookings = bookings;
@@ -62,7 +63,7 @@ namespace BookingSystem.Core.Tests.Interactions
         {
             // Arrange
             var today = new DateTime(2018, 1, 1, 10, 0, 0);
-            var expected = bookings.Where(booking => booking.Period.Contains(today)).ToList();
+            var expected = bookings.Where(booking => booking.Start.Date == today.Date || booking.End.Date == today.Date).ToList();
             var response_handler = new GetBookingForDateResponseHandler();
             var booking_repository = new InMemoryBookingRepository();
             booking_repository.Bookings = bookings;
@@ -100,22 +101,8 @@ namespace BookingSystem.Core.Tests.Interactions
     /// <summary>
     /// A simple concrete implementation of a response handler for getting bookings for a given date
     /// </summary>
-    public class GetBookingForDateResponseHandler : IGetBookingForDateResponseHandler
+    public class GetBookingForDateResponseHandler : MockResponseHandler, IGetBookingForDateResponseHandler
     {
-        /// <summary>
-        /// Gets or sets the exception that occurred in the handler
-        /// </summary>
-        public Exception Exception { get; set; }
-
-        /// <summary>
-        /// Calls an error on the response handler with the given exception
-        /// </summary>
-        /// <param name="e">The exception that occurred</param>
-        public void Error(Exception e)
-        {
-            Exception = e;
-        }
-
         /// <summary>
         /// Gets or sets the bookings for the handler
         /// </summary>
@@ -128,6 +115,16 @@ namespace BookingSystem.Core.Tests.Interactions
     public class FaultyBookingRepository : IBookingRepository
     {
         public IList<Booking> GetForDay(DateTime day)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool HasOverlapping(Booking booking)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(Booking booking)
         {
             throw new NotImplementedException();
         }

@@ -8,7 +8,18 @@ namespace BookingSystem.Core.Interfaces
     public interface IResponseHandler
     {
         /// <summary>
-        /// Calls an error on the response handler with the given exception
+        /// Called upon when the operation was successful
+        /// </summary>
+        void Success();
+
+        /// <summary>
+        /// Called upon when failed
+        /// </summary>
+        /// <param name="message">Message to indicate why there wasa failure</param>
+        void Fail(string message);
+
+        /// <summary>
+        /// Called upon when an error occurs
         /// </summary>
         /// <param name="e">The exception that occurred</param>
         void Error(Exception e);
