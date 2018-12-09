@@ -1,7 +1,9 @@
 ﻿using BookingSystem.Core.Entities;
 using BookingSystem.Core.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Net;
 
 namespace BookingSystem.WebApi.Presenters
 {
@@ -9,19 +11,24 @@ namespace BookingSystem.WebApi.Presenters
     {
         public IList<Booking> Bookings { get; set; }
 
+        public JsonResult Result { get; set; }
+
         public void Success()
         {
-            Console.WriteLine("SUCCESS");
+            Result = new JsonResult(Bookings);
+            Result.StatusCode = (int)HttpStatusCode.OK;
         }
 
         public void Fail(string message)
         {
-            Console.WriteLine("FAILURE");
+            Result = new JsonResult(message);
+            Result.StatusCode = (int)HttpStatusCode.BadRequest;
         }
 
         public void Error(Exception e)
         {
-            Console.WriteLine(e.Message);
+            Result = new JsonResult(e.Message);
+            Result.StatusCode = (int)HttpStatusCode.InternalServerError;
         }
     }
 }

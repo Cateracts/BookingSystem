@@ -31,6 +31,8 @@ namespace BookingSystem.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // TODO: Move to configuration
@@ -39,11 +41,12 @@ namespace BookingSystem.WebApi
                 (options => options.UseSqlServer(connection, builder => builder.MigrationsAssembly("BookingSystem.WebApi")));
 
             services.AddScoped<IGetBookingForDateRequest, GetBookingForDateInteractor>();
-            services.AddScoped<IGetBookingForDateResponseHandler, GetBookingForDatePresenter>();
+            services.AddScoped<IGetBookingForDateResponseHandler, GetBookingForDatePresenter>();            
 
             services.AddScoped<IMakeBookingRequest, MakeBookingInteractor>();
             services.AddScoped<IMakeBookingResponseHandler, MakeBookingPresenter>();
 
+            // TODO: Would be nice to be able to switch between these. Perhaps have in memory auto fill for testing.
             //services.AddSingleton<IBookingRepository, InMemoryBookingRepository>();
             services.AddScoped<IBookingRepository, EntityFrameworkBookingRepository>();
 
@@ -62,6 +65,10 @@ namespace BookingSystem.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // TODO: This is definitely not ideal. Need to revise.
+            // TODO: Move Origins to configuration
+            app.UseCors(options => options.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
 
             app.UseSwagger();
 

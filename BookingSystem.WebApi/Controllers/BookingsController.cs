@@ -1,10 +1,9 @@
 ﻿using BookingSystem.Core.Entities;
 using BookingSystem.Core.Interfaces;
+using BookingSystem.WebApi.Presenters;
 using BookingSystem.WebApi.Requests;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace BookingSystem.WebApi.Controllers
 {
@@ -32,28 +31,22 @@ namespace BookingSystem.WebApi.Controllers
             this.makeBookingRequest = makeBookingRequest;
             this.makeBookingResponseHandler = makeBookingResponseHandler;
         }
-
-        // GET api/values
+        
         [HttpGet]
         public ActionResult<Booking> Get()
         {
             getBookingsForDateRequest.Date = DateTime.Today;
             getBookingsForDateRequest.Execute();
 
-            return Ok(getBookingsForDateResponseHandler.Bookings);
+            return (getBookingsForDateResponseHandler as GetBookingForDatePresenter).Result;
         }
 
-        // GET api/values/5
-        //[HttpGet("{id}")]
-        //public ActionResult<string> Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        // POST api/values
         [HttpPost]
-        public void Post([FromBody] MakeBookingRequest request)
+        public ActionResult Post([FromBody] MakeBookingRequest request)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             makeBookingRequest.Booking = new Booking
             {
                 Name = request.Name,
@@ -63,18 +56,8 @@ namespace BookingSystem.WebApi.Controllers
             };
 
             makeBookingRequest.Execute();
+
+            return (makeBookingResponseHandler as MakeBookingPresenter).Result;
         }
-
-        // PUT api/values/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/values/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

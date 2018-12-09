@@ -38,6 +38,7 @@ namespace BookingSystem.Core.Interactions
             try
             {
                 responseHandler.Bookings = bookingRepository.GetForDay(Date);
+                responseHandler.Success();
             }
             catch (Exception e)
             {

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookingSystem.WebApi.Migrations
 {
     [DbContext(typeof(BookingContext))]
-    [Migration("20181209041628_Initial")]
+    [Migration("20181209105549_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
