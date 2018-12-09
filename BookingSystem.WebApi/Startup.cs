@@ -1,13 +1,15 @@
 ﻿using BookingSystem.Core.Entities;
-using BookingSystem.Persistence.InMemory;
 using BookingSystem.Core.Interactions;
 using BookingSystem.Core.Interfaces;
 using BookingSystem.Core.Rules;
+using BookingSystem.Persistence.EntityFramework;
+using BookingSystem.Persistence.InMemory;
 using BookingSystem.WebApi.Presenters;
 using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
@@ -31,13 +33,19 @@ namespace BookingSystem.WebApi
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            // TODO: Move to configuration
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=Bookings;Trusted_Connection=True;ConnectRetryCount=0";
+            services.AddDbContext<BookingContext>
+                (options => options.UseSqlServer(connection, builder => builder.MigrationsAssembly("BookingSystem.WebApi")));
+
             services.AddScoped<IGetBookingForDateRequest, GetBookingForDateInteractor>();
             services.AddScoped<IGetBookingForDateResponseHandler, GetBookingForDatePresenter>();
 
             services.AddScoped<IMakeBookingRequest, MakeBookingInteractor>();
             services.AddScoped<IMakeBookingResponseHandler, MakeBookingPresenter>();
 
-            services.AddSingleton<IBookingRepository, InMemoryBookingRepository>();
+            //services.AddSingleton<IBookingRepository, InMemoryBookingRepository>();
+            services.AddScoped<IBookingRepository, EntityFrameworkBookingRepository>();
 
             services.AddScoped<IValidator<Booking>, BookingValidator>();
 

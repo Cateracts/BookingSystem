@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BookingSystem.Core\BookingSystem.Core.csproj" />
+    <ProjectReference Include="..\BookingSystem.Persistence.EntityFramework\BookingSystem.Persistence.EntityFramework.csproj" />
     <ProjectReference Include="..\BookingSystem.Persistence.InMemory\BookingSystem.Persistence.InMemory.csproj" />
   </ItemGroup>
 

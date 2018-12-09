@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingSystem.WebApi", "Boo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingSystem.Persistence.InMemory", "BookingSystem.Persistence.InMemory\BookingSystem.Persistence.InMemory.csproj", "{7CF8E2CF-2B5A-450D-ADC1-8FFDDA20D92D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingSystem.Persistence.EntityFramework", "BookingSystem.Persistence.EntityFramework\BookingSystem.Persistence.EntityFramework.csproj", "{B9D8ACFC-7E10-4E81-BEB1-8A877E7D7A68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7CF8E2CF-2B5A-450D-ADC1-8FFDDA20D92D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CF8E2CF-2B5A-450D-ADC1-8FFDDA20D92D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CF8E2CF-2B5A-450D-ADC1-8FFDDA20D92D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9D8ACFC-7E10-4E81-BEB1-8A877E7D7A68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9D8ACFC-7E10-4E81-BEB1-8A877E7D7A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9D8ACFC-7E10-4E81-BEB1-8A877E7D7A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9D8ACFC-7E10-4E81-BEB1-8A877E7D7A68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{D906CB3A-AF36-4006-AFA7-CCFDCB898B42} = {43D5F064-F5B0-4A7A-BB39-25CA43424518}
 		{E35905ED-19A4-4C23-B562-837E595C63D7} = {8DBC890A-07EA-4E73-B536-B763576C6658}
 		{7CF8E2CF-2B5A-450D-ADC1-8FFDDA20D92D} = {20DA3D83-677C-440A-95C5-778749EB6799}
+		{B9D8ACFC-7E10-4E81-BEB1-8A877E7D7A68} = {20DA3D83-677C-440A-95C5-778749EB6799}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {422B532C-4F15-4682-A76B-08FE83625E3C}
