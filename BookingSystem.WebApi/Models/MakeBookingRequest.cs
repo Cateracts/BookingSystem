@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookingSystem.Core.Entities;
+using System;
 
 namespace BookingSystem.WebApi.Requests
 {
@@ -25,6 +26,6 @@ namespace BookingSystem.WebApi.Requests
         /// <summary>
         /// Gets or sets the identifier of the space to use
         /// </summary>
-        public int SpaceId { get; set; }
+        public Space Space { get; set; }
     }
 }

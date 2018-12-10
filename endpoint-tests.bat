@@ -1,0 +1,1 @@
+newman run booking-system-webapi.postman_collection -e development.postman_environment

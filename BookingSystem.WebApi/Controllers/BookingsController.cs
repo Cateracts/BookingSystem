@@ -52,7 +52,7 @@ namespace BookingSystem.WebApi.Controllers
                 Name = request.Name,
                 Start = request.Start,
                 End = request.End,
-                Space = new Space { Id = request.SpaceId }
+                Space = request.Space
             };
 
             makeBookingRequest.Execute();

@@ -1,5 +1,6 @@
 ﻿using BookingSystem.Core.Entities;
 using BookingSystem.Core.Exceptions;
+using BookingSystem.Core.Extensions;
 using BookingSystem.Core.Interfaces;
 using FluentValidation;
 using System;
@@ -48,7 +49,7 @@ namespace BookingSystem.Core.Interactions
                 var results = validator.Validate(Booking);
 
                 if (results.IsValid == false)
-                    throw new InvalidBookingException();
+                    throw new InvalidBookingException(results.Flatten());
 
                 if (bookingRepository.HasOverlapping(Booking))
                 {
@@ -64,11 +65,6 @@ namespace BookingSystem.Core.Interactions
             {
                 responseHandler.Error(e);
             }
-            
-            // 2. Ensure that there is no conflict
-            // 3. If there is a conflict, log the booking being made
-            // 4. If there is a conflict, reject the booking
-            // 5. If there is no conflict and the booking is valid, register it
         }
     }
 }
