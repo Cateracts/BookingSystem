@@ -72,7 +72,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"string\",\r\n  \"start\": \"2018-12-08T22:12:04.327Z\",\r\n  \"end\": \"2018-12-08T22:12:04.327Z\",\r\n  \"spaceId\": 0\r\n}"
+					"raw": "{\r\n  \"name\": \"string\",\r\n  \"start\": \"2018-12-09T20:11:04.327Z\",\r\n  \"end\": \"2018-12-09T23:13:04.327Z\",\r\n  \"space\": {\r\n  \t\"name\": \"string\",\r\n  \t\"id\": 1\r\n  }\r\n}"
 				},
 				"url": {
 					"raw": "{{RootAddress}}/bookings",
