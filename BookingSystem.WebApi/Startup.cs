@@ -46,9 +46,13 @@ namespace BookingSystem.WebApi
             services.AddScoped<IMakeBookingRequest, MakeBookingInteractor>();
             services.AddScoped<IMakeBookingResponseHandler, MakeBookingPresenter>();
 
-            // TODO: Would be nice to be able to switch between these. Perhaps have in memory auto fill for testing.
+            services.AddScoped<IGetSpacesRequest, GetSpacesInteractor>();
+            services.AddScoped<IGetSpacesResponseHandler, GetSpacesPresenter>();
+
             //services.AddSingleton<IBookingRepository, InMemoryBookingRepository>();
+            //services.AddSingleton<ISpaceRepository, InMemorySpaceRepository>();
             services.AddScoped<IBookingRepository, EntityFrameworkBookingRepository>();
+            services.AddScoped<ISpaceRepository, EntityFrameworkSpaceRepository>();
 
             services.AddScoped<IValidator<Booking>, BookingValidator>();
 

@@ -1,2 +1,2 @@
 ﻿docker build -t booking-system-api-development -f Dockerfile .
-docker run -p 4400:4400 booking-system-development
+docker run -p 4200:4200 booking-system-development

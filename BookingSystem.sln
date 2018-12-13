@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingSystem.Persistence.I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingSystem.Persistence.EntityFramework", "BookingSystem.Persistence.EntityFramework\BookingSystem.Persistence.EntityFramework.csproj", "{B9D8ACFC-7E10-4E81-BEB1-8A877E7D7A68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingSystem.WebApi.Tests", "BookingSystem.WebApi.Tests\BookingSystem.WebApi.Tests.csproj", "{2189AC58-A45C-403B-8166-C55C6F4EF9EF}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Endpoint Testing", "4. Endpoint Testing", "{22C12427-81BB-450C-AA80-55D9E231F6D1}"
 	ProjectSection(SolutionItems) = preProject
 		Newman.bat = Newman.bat
@@ -52,10 +50,6 @@ Global
 		{B9D8ACFC-7E10-4E81-BEB1-8A877E7D7A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9D8ACFC-7E10-4E81-BEB1-8A877E7D7A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9D8ACFC-7E10-4E81-BEB1-8A877E7D7A68}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2189AC58-A45C-403B-8166-C55C6F4EF9EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2189AC58-A45C-403B-8166-C55C6F4EF9EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2189AC58-A45C-403B-8166-C55C6F4EF9EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2189AC58-A45C-403B-8166-C55C6F4EF9EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,7 +60,6 @@ Global
 		{E35905ED-19A4-4C23-B562-837E595C63D7} = {8DBC890A-07EA-4E73-B536-B763576C6658}
 		{7CF8E2CF-2B5A-450D-ADC1-8FFDDA20D92D} = {20DA3D83-677C-440A-95C5-778749EB6799}
 		{B9D8ACFC-7E10-4E81-BEB1-8A877E7D7A68} = {20DA3D83-677C-440A-95C5-778749EB6799}
-		{2189AC58-A45C-403B-8166-C55C6F4EF9EF} = {8DBC890A-07EA-4E73-B536-B763576C6658}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {422B532C-4F15-4682-A76B-08FE83625E3C}
