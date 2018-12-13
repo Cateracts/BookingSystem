@@ -21,8 +21,6 @@ The application is split into 2 parts
  4. ng build
  5. npm start (Or LocalContainer.bat for docker image/container)
 
- [Steps]
-
 ### Prerequisites
  - Microsoft Visual Studio 2017
  - Visual Studio Code
