@@ -53,8 +53,12 @@ At present there are only manual deployments for this but multiple options.
 1. Abstract Space inherited from "Bookable". This is to enable the booking system to be flexible so as to be able to book anything, not just meeting rooms
 2. Split the Booking controller. To start with ideally to separate Command and Query controllers.
 3. Tests against the web api controllers and presenters
+4. Prettier angular booking form
+5. Calendar controls
+6. Styling on time controls
+7. Date/time formats
 
-## Authors
+## Author(s)
 * **Nathan Hardes**
 
 ## Acknowledgments
