@@ -8,9 +8,18 @@ The application is split into 2 parts
 
  To get, develop and test the web api (and core structure) please follow these steps
 
- [Steps]
+ 1. git clone [repository-url]
+ 2. Set BookingSystem.WebApi to default start up project
+ 3. Run the application
+ 4. To see swagger page add "/swagger" to the end of the url
 
  To get, develop and test the application front end, please follow these steps
+ 
+ 1. git clone [repository-url]
+ 2. npm update -g @angular/cli
+ 3. npm install
+ 4. ng build
+ 5. npm start (Or LocalContainer.bat for docker image/container)
 
  [Steps]
 
